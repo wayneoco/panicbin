@@ -15,10 +15,14 @@ app.use(
   })
 );
 
-app.get("api/bins", binsControllers.getAllBins);
-app.get("api/bins/:binId", binsControllers.getBinById);
-app.post("api/bins", binsControllers.createBin);
+app.get("/api/bins", binsControllers.getAllBins);
+app.get("/api/bins/:binId", binsControllers.getBinById);
+app.post("/api/bins", binsControllers.createBin);
 
-app.get("api/:binId/requests", requestsControllers.getAllRequests);
-app.get("api/:requestId", requestsControllers.getRequestById);
-app.post("api/:binId", requestsControllers.createRequestRecord);
+app.get("/api/requests/:binId", requestsControllers.getRequestsByBinId);
+app.get("/api/requests/:requestId", requestsControllers.getRequestById);
+app.post("/api/requests/:binId", requestsControllers.createRequestRecord);
+
+app.listen(5005, () => {
+  console.log("Server listening on PORT 5005");
+});
