@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 
 const binsControllers = require("./controllers/bins-controllers");
-const requestControllers = require("./controllers/requests-controllers");
+const requestsControllers = require("./controllers/requests-controllers");
 
 const app = express();
 
