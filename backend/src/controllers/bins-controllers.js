@@ -11,7 +11,7 @@ const pool = new Pool({
 });
 
 const getAllBins = (req, res) => {
-  pool.query("SELECT * FROM bins", (error, results) => {
+  pool.query("SELECT * FROM bins ORDER BY createdAt DESC", (error, results) => {
     if (error) {
       throw error;
     }
@@ -36,8 +36,7 @@ const getBinById = (req, res) => {
 
 const createBin = (req, res) => {
   const id = uuidv4();
-  const date = new Date();
-  console.log(id, date);
+  const date = new Date().toUTCString();
 
   pool.query(
     "INSERT INTO bins (uuid, createdAt) VALUES ($1, $2)",
