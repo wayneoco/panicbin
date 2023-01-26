@@ -39,13 +39,13 @@ const createBin = (req, res) => {
   const date = new Date().toUTCString();
 
   pool.query(
-    "INSERT INTO bins (uuid, createdAt) VALUES ($1, $2)",
+    "INSERT INTO bins (uuid, createdAt) VALUES ($1, $2) RETURNING *",
     [id, date],
     (error, results) => {
       if (error) {
         throw error;
       }
-      res.status(201).end();
+      res.status(201).json(results.rows[0]);
     }
   );
 };
