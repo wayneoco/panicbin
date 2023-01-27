@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import { Divider, Container, Typography } from "@mui/material";
 import Home from "./views/Home";
 import Bin from "./views/Bin";
@@ -8,14 +8,29 @@ import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 
+const linkStyle = {
+  textDecoration: "none",
+  color: "#3e87c4",
+};
+
 const App = () => {
   return (
     <div className="App">
       <Router>
         <Container>
-          <Typography variant="h3" align="center" style={{ marginTop: "2em" }}>
-            PanicBin
-          </Typography>
+          <Link to="/" style={linkStyle}>
+            <Typography
+              variant="h3"
+              align="center"
+              style={{
+                marginLeft: "auto",
+                marginBottom: "auto",
+                marginTop: "2em",
+              }}
+            >
+              PanicBin
+            </Typography>
+          </Link>
           <Typography
             variant="subtitle1"
             align="center"
