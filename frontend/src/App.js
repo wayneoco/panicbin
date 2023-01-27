@@ -1,8 +1,8 @@
-import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
-import { Button, Divider, Container, Typography } from "@mui/material";
-import MainHeader from "./shared/MainHeader";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { Divider, Container, Typography } from "@mui/material";
 import Home from "./views/Home";
 import Bin from "./views/Bin";
+import Request from "./views/Request";
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
@@ -27,6 +27,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/bins/:binId" element={<Bin />} />
+            <Route path="/:binId/:requestId" element={<Request />} />
           </Routes>
         </Container>
       </Router>

@@ -8,7 +8,6 @@ import {
   List,
   ListItem,
   ListItemText,
-  Typography,
 } from "@mui/material";
 import axios from "axios";
 
@@ -20,7 +19,7 @@ const Home = () => {
   };
 
   useEffect(() => {
-    axios.get("http://localhost:7003/api/bins").then((response) => {
+    axios.get(`https://panicbin.wayneoco.net/api/bins`).then((response) => {
       setBins(response.data);
     });
   }, [setBins]);
@@ -40,7 +39,9 @@ const Home = () => {
           color="primary"
           sx={{ marginLeft: "auto", marginRight: "auto" }}
           onClick={async () => {
-            const response = await axios.post(`http://localhost:7003/api/bins`);
+            const response = await axios.post(
+              `https://panicbin.wayneoco.net/api/bins`
+            );
             if (response.status === 201) {
               setOpen(true);
               setTimeout(() => {
@@ -66,9 +67,10 @@ const Home = () => {
           {bins &&
             bins.length > 0 &&
             bins.map(({ uuid }) => {
+              const url = `https://panicbin.wayneoco.net/api/requests/${uuid}`;
               return (
                 <ListItem key={uuid} component={Link} to={`/bins/${uuid}`}>
-                  <ListItemText primary={uuid} />
+                  <ListItemText primary={url} />
                 </ListItem>
               );
             })}
