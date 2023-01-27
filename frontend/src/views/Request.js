@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Box, List, ListItem, ListItemText, Typography } from "@mui/material";
 import axios from "axios";
 
 const Request = () => {
+  const binId = useParams().binId;
   const requestId = useParams().requestId;
   console.log(requestId);
   const [createdAt, setCreatedAt] = useState();
@@ -27,6 +28,9 @@ const Request = () => {
       <Box>
         <Typography variant="h5" align="center" style={{ marginTop: "3em" }}>
           Request {requestId}
+        </Typography>
+        <Typography variant="subtitle2" align="center">
+          for Bin <Link to={`../bins/${binId}`}>{binId}</Link>
         </Typography>
       </Box>
       <Box
